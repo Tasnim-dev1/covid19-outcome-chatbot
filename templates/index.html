@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>COVID-19 Prediction</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+<body>
+    <div class="container">
+        <h2>COVID-19 Outcome Prediction</h2>
+        <form action="/predict" method="post">
+            <label for="Confirmed">Confirmed Cases</label>
+            <input type="number" name="Confirmed" required>
+
+            <label for="Active">Active Cases</label>
+            <input type="number" name="Active" required>
+
+            <label for="Country_Region">Country</label>
+            <input type="text" name="Country_Region" required>
+
+            <label for="WHO_Region">Region</label>
+            <input type="text" name="WHO_Region" required>
+
+            <input type="submit" value="Predict">
+        </form>
+
+        {% if prediction_text %}
+            <div class="result">{{ prediction_text }}</div>
+        {% endif %}
+    </div>
+</body>
+
+</html>
